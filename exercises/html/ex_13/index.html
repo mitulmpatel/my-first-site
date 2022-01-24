@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create User</title>
+  <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+</head>
+<body>
+    <h1>Create User</h1>
+    <hr>
+    <form action="create_user.html" method="get" enctype="application/x-www-form-urlencoded">
+        
+        
+
+        <fieldset>
+          <legend>User Form</legend>
+          
+          <label for="name">name</label>
+          <input  id='name' type="text" name="name" placeholder="name" size="30" maxlength="12">
+          <br>
+          <label for="favmovies">Password:</label>
+          <select name="favmovies" id="favmovies">
+            <option value="deadpool">Deadpool</option>
+            <option value="batman_vs_superman">Batman v Superman</option>
+            <option value="civil_war">Captain America: Civil War</option>
+            <option value="doctor_strange">Doctor Strange</option>
+            <option value="wonder_woman" selected>Wonder Woman</option>
+            <option value="thor_ragnarok">Thor: Ragnarok</option>
+            <option value="black_panther">Black Panther</option>
+          </select>
+          <br>
+          
+          <label for="bio">Bio</label>
+          <textarea name="bio" id="bio" cols="10" rows="2" placeholder="Bio" ></textarea>
+          
+          <br>
+          <label for="avatar">Avatar</label>
+          <input type="file" id="avatar" name="avatar" />
+
+          
+        
+        </fieldset>
+
+        
+        <input type="reset" value="Clear Form">
+          <input type="submit" name="submit" value="Add new user">
+
+    </form>
+</body>
+</html>
