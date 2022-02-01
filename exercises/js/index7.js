@@ -1,8 +1,8 @@
-var FirstName = "Mitul";
-var LastName = "Patel";
-var age = 37;
-var DateOfBirth = "11/09/1982";
-var Address= "302-3222222 Who cares";
+let FirstName = "Mitul";
+let LastName = "Patel";
+let age = 37;
+let DateOfBirth = "11/09/1982";
+let Address= "302-3222222 Who cares";
 
 console.log("FirstName:", FirstName);
 console.log("LastName:", LastName);
