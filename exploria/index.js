@@ -1,12 +1,21 @@
 const express = require("express");
+// const MongoClient = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
+//const url = "mongodb://localhost:27017";
+
+const mongoDB = "mongodb://127.0.0.1/exploria";
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+const db = mongoose.connection;
 
 app.set("view engine", "pug");
 
 app.use(express.static('public'));
 
-
+/* MongoClient.connect(url, function (err, client) {
+    console.log("Connected successfully to MongoDB server");
+}); */
 /* 
 app.get("/", (req, res) => {
     res.render("index", {});

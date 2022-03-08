@@ -1,10 +1,18 @@
 // Create the express router to handle our home requests
 var express = require('express');
+var PropertiesModel = require("../models/properties.model");
 var router = express.Router();
 
-router.get('/', function(req, res) {
-  // res.send('Welcome to our Site!');
-  // res.status(200).json({ name: 'Marta', age: '40'});
+router.get('/', async function (req, res) {
+  const properties = await PropertiesModel.find({"featured": "true"}).exec();  
+  console.log(properties);
+
+  /* PropertiesModel.find({ featured: true }).
+    then(properties => {
+      console.log(properties); // 'A'
+      return properties
+    }); */
+
   res.render("index", {});
 });
 
