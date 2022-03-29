@@ -11,115 +11,18 @@ block content
       .featured-content
         h2
         .main-box
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Park City Old Town Miner's Cottage
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Beautiful Deer Valley Condo.
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img03.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Deer Valley Retreat
-        .main-box
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Park City Old Town Miner's Cottage
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Beautiful Deer Valley Condo.
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img03.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Deer Valley Retreat
-        .main-box
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Park City Old Town Miner's Cottage
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Beautiful Deer Valley Condo.
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img03.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Deer Valley Retreat
-        .main-box
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Park City Old Town Miner's Cottage
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Beautiful Deer Valley Condo.
-          a(href="editprofile.html").
-            
-            
-          .box-img
-            a(href="editprofile.html")
-              img(src="images/img03.png", all)
-            h5
-              a(href="editprofile.html")
-              a.park-city(href) Deer Valley Retreat
+          each property in properties
+            .box-img
+              a(href="/properties/" + property._id)
+                img(src="/images/properties/"+property.image)
+              h5
+                a(href="/properties/" + property._id)=property.name
+              .bookmark
+                if arrBookmarkPropsIds.length > 0
+                  if (!arrBookmarkPropsIds.includes(property._id.toString()))
+                    a(href="/user/bookmarks/add/"+property._id+"?_method=POST") Add to bookmark
+                  if (arrBookmarkPropsIds.includes(property._id.toString()))
+                    a(href="/user/bookmarks/delete/"+property._id+"?_method=POST") Remove bookmark
+                else
+                  a(href="/user/bookmarks/add/"+property._id+"?_method=POST") Add to bookmark
   //  Featured Properties-end 

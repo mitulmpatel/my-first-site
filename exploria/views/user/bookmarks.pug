@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block content
+  //  Featured Properties-start 
+  .banner-main
+    .container
+      .banner-content
+        h1 Bookmarked Properties
+  section.featured-properties
+    .container
+      .featured-content
+        h2
+        .main-box
+          each property in properties
+            .box-img
+              a(href="/properties/" + property._id)
+                img(src="/images/properties/"+property.image)
+              h5
+                a(href="/properties/" + property._id)=property.name
+              .bookmark
+                a(href="/user/bookmarks/delete/"+property._id+"?_method=POST") Remove bookmark

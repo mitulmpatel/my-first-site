@@ -1,0 +1,46 @@
+extends ../layout.pug
+
+block content
+    section.EditProfile-section
+        .banner-main
+            .container
+            .banner-content
+                h1 EditProfile
+        .container
+            .top-section
+                .img
+                    img(src="/images/users/"+user.photo)
+                form(action="/user/editprofile?_method=PATCH" method="POST" enctype="multipart/form-data")
+                    if message
+                        .success=message
+                    if errormsg
+                        .error=errormsg
+                    .main-section
+                        .left-block
+                            label(for) First Name
+                            input(type="text" name="first_name" value=user.first_name)
+                            label(for) Email
+                            input(type="text" name="email" value=user.email)
+                            label(for) Password
+                            input(type="password",  name="password")
+                            label(for) State
+                            select(name="state")
+                                each state in states
+                                    option(value=state.code selected=user.state==state.code) #{state.name}
+                            label(for) Gender
+                            .gender-section
+                                input(type="radio", name="gender", value="Male", class="radio", checked=user.gender=="Male" )
+                                label Male
+                                input(type="radio", name="gender", value="Female", class="radio", checked=user.gender=="Female")
+                                label Female
+                        .right-block
+                            label(for) Last Name
+                            input(type="text" name="last_name" value=user.last_name)
+                            label(for) Phone
+                            input(type="text" name="phone" value=user.phone)
+                            label(for) Confirm Password
+                            input(type="password" name="confirm_password")
+                            label(for) Photo
+                            input(type="file", name="photo")
+                    .login-button
+                        input(type="submit" value="Submit" class="submit_button")

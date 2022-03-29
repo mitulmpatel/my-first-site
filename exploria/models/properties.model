@@ -37,4 +37,4 @@ let propertiesSchema = new mongoose.Schema({
     }
 );
 
-module.exports = mongoose.model("PropertiesModel", propertiesSchema);
+module.exports = mongoose.model("PropertiesModel", propertiesSchema,"properties");

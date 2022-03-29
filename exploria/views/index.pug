@@ -17,35 +17,22 @@ block content
       .featured-content
         h2 Featured Properties
         .main-box
-          a(href="propert- details.html").
-            
-            
-          .box-img
-            a(href="propert- details.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="propert- details.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
-          a(href="propert- details.html").
-            
-            
-          .box-img
-            a(href="propert- details.html")
-              img(src="images/img02.png", all)
-            h5
-              a(href="propert- details.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
-          a(href="propert- details.html").
-            
-            
-          .box-img
-            a(href="propert- details.html")
-              img(src="images/img03.png", all)
-            h5
-              a(href="propert- details.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
+          each property in properties
+            .box-img
+              a(href="/properties/" + property._id)
+                img(src="images/properties/"+property.image)
+              h5=property.name
+              .bookmark
+                if arrBookmarkPropsIds.length > 0
+                  if (!arrBookmarkPropsIds.includes(property._id.toString()))
+                    a(href="user/bookmarks/add/"+property._id+"?_method=POST") Add to bookmark
+                  if (arrBookmarkPropsIds.includes(property._id.toString()))
+                    a(href="user/bookmarks/delete/"+property._id+"?_method=POST") Remove bookmark
+                else
+                  a(href="user/bookmarks/add/"+property._id+"?_method=POST") Add to bookmark
+
         .browse
-          a(href="properties.html") Browse More
+          a(href="/properties") Browse More
   //  Featured Properties-end 
   //  About-start 
   section.about
@@ -55,7 +42,7 @@ block content
         h2 About Vacation destinations
         p.
           We are a digital and branding company that believes in the power of creative strategy and along with great design.Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.We are a digital and branding company that believes in the power of creative strategy and along withgreat design.Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. We are a digital and branding company that believes in the power of creative strategy and along with great design.Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio,dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          
+
   //  About-end 
   //  City Attractions-start 
   section.city-attractions
@@ -65,8 +52,8 @@ block content
         h2 City Attractions
         .city-content-main-box
           a(href="propert- details.html").
-            
-            
+
+
           .city-box-img
             a(href="propert- details.html")
               img(src="images/img02.png", all)
@@ -74,8 +61,8 @@ block content
               a(href="propert- details.html")
               a.park-city(href="#") Remai Modern Museum
           a(href="propert- details.html").
-            
-            
+
+
           .city-box-img
             a(href="propert- details.html")
               img(src="images/img02.png", all)
@@ -83,8 +70,8 @@ block content
               a(href="propert- details.html")
               a.park-city(href="#") Wanuskewin Heritage Park
           a(href="propert- details.html").
-            
-            
+
+
           .city-box-img
             a(href="propert- details.html")
               img(src="images/img03.png", all)
@@ -92,8 +79,8 @@ block content
               a(href="propert- details.html")
               a.park-city(href="#") Saskatoon Farmers Market
           a(href="propert- details.html").
-            
-            
+
+
           .city-box-img
             a(href="propert- details.html")
               img(src="images/img03.png", all)

@@ -20,7 +20,7 @@ let inquiriesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dob: {
+    bookingdate: {
         type: Date,
         required: false        
     },
@@ -40,4 +40,4 @@ let inquiriesSchema = new mongoose.Schema({
         }
     }
 );
-module.exports = mongoose.model("inquiriesModel", inquiriesSchema);
+module.exports = mongoose.model("inquiriesModel" , inquiriesSchema, "inquiries");

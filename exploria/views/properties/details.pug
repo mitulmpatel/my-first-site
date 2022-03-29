@@ -3,106 +3,49 @@ extends ../layout.pug
 block content
   //  header complete 
   section.properties
-    .banner-main
+    .banner-main(style='background-image: url(/images/properties/' +property.image +');')
       .container
         .banner-content
-          h1 Park City Old Town Miner's
+          h1=property.name
     .container
       .properties-form
         .left-block
           div
-            p.
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-              
-            p.
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-              
-            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            p !{property.description}
+
           div
             h3 Amenities
             .listing
-              table
-                tbody
-                  tr(style="font-size: 20px;")
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                  tr(style="font-size: 20px;")
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                  tr(style="font-size: 20px;")
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                  tr(style="font-size: 20px;")
-                    td bathtub
-                    td bathtub
-                    td bathtub
-                    td bathtub
+              ul
+                each amenity in amenities
+                  li=amenity
         .right-block
-          form(action="action-page")
+          form(action="/properties/inquiry" method="post"  enctype="application/x-www-form-urlencoded")
             fieldset
               legend Request a quote
+              if message
+                .success=message
               label(for) Name
-              input(type="text")
+              input(type="text",name="name",required="required",value="Mitul")
               label(for) Email
-              input(type="text")
+              input(type="email",name="email",required="required",value="patel.mitul.m@gmail.com")
               label(for) Phone
-              input(type="text")
+              input(type="text",name="phone",required="required",value="302-713-4410")
               label(for) Stay Date
-              input(type="date", name)
+              input(type="date", name="bookingdate",value="25/03/2022")
               label(for) Number of guests
-              input(type="number", name)
+              input(type="number", name="guests",required="required",value=2)
               label(for) Notes
-              textarea(name, cols="30", rows="10")
+              textarea( cols="30" rows="10",name="notes",value="This is my notes")
+              input(type="hidden",name="propertyid",value=property._id)
               .form-button
                 button(type="submit") Send Request
       div
         h2 Nearby Properties
       .img-section
-        a(href="editprofile.html").
-          
-          
-        .box-img
-          a(href="editprofile.html")
-            .img
-              img(src="images/pexels-photo-572897.jpeg", alt)
-          div
-            a(href="editprofile.html").
-              
-              
-            h5
-              a(href="editprofile.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
-        a(href="editprofile.html").
-          
-          
-        .box-img
-          a(href="editprofile.html")
-            .img
-              img(src="images/pexels-photo-572897.jpeg", alt)
-          div
-            a(href="editprofile.html").
-              
-              
-            h5
-              a(href="editprofile.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
-        a(href="editprofile.html").
-          
-          
-        .box-img
-          a(href="editprofile.html")
-            .img
-              img(src="images/pexels-photo-572897.jpeg", alt)
-          div
-            a(href="editprofile.html").
-              
-              
-            h5
-              a(href="editprofile.html")
-              a.park-city(href="#") Park City Old Town Miner's Cottage
+        for property in properties
+          .box-img
+            a(href="/properties/" + property._id)
+              img(src="/images/properties/"+property.image)
+            div
+              a(href="/properties/" + property._id)=property.name

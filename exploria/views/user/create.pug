@@ -1,0 +1,53 @@
+extends ../layout.pug
+
+block content
+    section.section-webpage
+        .banner-main
+            .container
+            .banner-content
+                h1 Register
+        .container
+            div
+            form(action="/user/create" method="POST" enctype="multipart/form-data")
+                if message
+                    .success=message
+                if errormsg
+                    .error=errormsg
+                .main-section
+                    .left-block
+                        div
+                            label(for) First Name
+                            input(type="text" name="first_name")
+                        div
+                            label(for) Email
+                            input(type="text" name="email")
+                        div
+                            label(for) Password
+                            input(type="password",  name="password")
+                        div
+                            label(for) State
+                                select(name="state")
+                                    each state in states
+                                        option(value=state.code) #{state.name}
+                        div
+                            label(for) Gender
+                                .gender-section
+                                    input(type="radio", name="gender", value="Male", class="radio")
+                                    label Male
+                                    input(type="radio", name="gender", value="Female", class="radio")
+                                    label Female
+                    .right-block
+                        div
+                            label(for) Last Name
+                            input(type="text" name="last_name")
+                        div
+                            label(for) Phone
+                            input(type="text" name="phone")
+                        div
+                            label(for) Confirm Password
+                            input(type="password" name="confirm_password")
+                        div
+                            label(for) Photo
+                            input(type="file", name="photo")
+                .register-button
+                    input(type="submit" value="Submit" class="submit_button")

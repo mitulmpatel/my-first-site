@@ -42,7 +42,9 @@ let usersSchema = new mongoose.Schema({
     },
     bookmarkpropties: [
         {
-            property: String
+            property: {
+                type: String
+            }
         }
     ]
 },
@@ -53,4 +55,4 @@ let usersSchema = new mongoose.Schema({
         }
     }
 );
-module.exports = mongoose.model("UsersModel", usersSchema);
+module.exports = mongoose.model("UsersModel", usersSchema, "users");

@@ -1,17 +1,21 @@
 const express = require("express");
-// const MongoClient = require("mongodb").MongoClient;
 const mongoose = require("mongoose");
+var methodOverride = require('method-override')
+
 const app = express();
 const port = 3000;
-//const url = "mongodb://localhost:27017";
 
-const mongoDB = "mongodb://127.0.0.1/exploria";
+const mongoDB = "mongodb://localhost:27017/exploria";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.on('connected', function(){console.log("Connection successful");});
 
 app.set("view engine", "pug");
 
 app.use(express.static('public'));
+
+app.use(methodOverride('_method'))
 
 /* MongoClient.connect(url, function (err, client) {
     console.log("Connected successfully to MongoDB server");
@@ -25,9 +29,18 @@ app.get("/", (req, res) => {
 // Routers
 const home = require('./src/home.js');
 const properties = require('./src/properties.js');
+const user = require('./src/user.js');
 
 app.use('/', home);
 app.use('/properties', properties);
+app.use('/user', user);
+
+/*app.post('/inquiry', urlencodedParser, function (req, res) {
+    console.log('Got body:', req.body);
+    //res.redirect(`/properties/${req.body.propertyid}`);
+    res.redirect(`/properties`);
+});*/
+
 app.get("/about", (req, res) => {
     res.render("static/about", {});
 });
