@@ -6,6 +6,9 @@ const app = express();
 const port = 3000;
 
 const mongoDB = "mongodb://localhost:27017/exploria";
+// mongodb+srv://exploria:<password>@cluster0.rj9vf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
@@ -63,9 +66,10 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!')
 });
 
-app.listen(port, (err) => {
+app.listen(process.env.PORT || port, (err) => {
     if (err) {
         return console.log("something bad happened", err);
     }
-    console.log(`Server running on port ${port}`);
+    //console.log(`Server running on port ${port}`);
+    console.log(`Node app is listening on port ${process.env.PORT || port} 🚀🚀🚀!`);
 });

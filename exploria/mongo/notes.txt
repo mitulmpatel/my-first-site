@@ -96,3 +96,7 @@ db.properties.updateOne({"_id": ObjectId("6226b595c43e04c89cd5ce1d")}, { $set: {
 { "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
 { "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
 { "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+
+
+
+mongoexport --collection=properties --db=exploria --out=properties.json
